@@ -42,6 +42,12 @@ public class GamePlay extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (GameManager.gameState == 0){
+            GameManager.gameState = 1;
+            AppHolder.getSoundPlay().playSwoosh();
+        }else {
+            AppHolder.getSoundPlay().playWing();
+        }
         GameManager.gameState = 1;
         AppHolder.getGameManager().bird.setVelocity(AppHolder.JUMP_VELOCITY);
         return true;

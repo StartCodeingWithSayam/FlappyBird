@@ -60,6 +60,7 @@ public class GameManager {
                     && (tubeCollectionArrayList.get(winningCount).getUpTubeCollectionY() > bird.getY()
                     || tubeCollectionArrayList.get(winningCount).getDownTube() < bird.getY() + AppHolder.getBitmapControl().getBirdHeight())) {
                 gameState = 2;
+                AppHolder.getSoundPlay().playHit();
                 Context context = AppHolder.gameActivityContext;
                 Intent intent = new Intent(context, GameOverActivity.class);
                 intent.putExtra("score",scoreCount);
@@ -71,11 +72,13 @@ public class GameManager {
                         AppHolder.getBitmapControl().getTubeWidth()) {
                     scoreCount++;
                     winningCount++;
+                   AppHolder.getSoundPlay().playPoint();
                     if (winningCount > AppHolder.tube_numbers - 1) {
                         winningCount = 0;
                     }
                 }
                 for (int i = 0; i < AppHolder.tube_numbers; i++) {
+
                     if (tubeCollectionArrayList.get(i).getXTube() <
                             -(AppHolder.getBitmapControl().getTubeWidth())) {
                         tubeCollectionArrayList.get(i).setXTube(tubeCollectionArrayList.get(i).getXTube()
@@ -83,10 +86,22 @@ public class GameManager {
                         int upTubeCollection_Y = AppHolder.minTubeCollection_Y +
                                 random.nextInt(AppHolder.maxTubeCollection_Y + AppHolder.minTubeCollection_Y + 1);
                         tubeCollectionArrayList.get(i).setUpTubeCollectionY(upTubeCollection_Y);
+                        tubeCollectionArrayList.get(i).setColorTube();
                     }
                     tubeCollectionArrayList.get(i).setXTube(tubeCollectionArrayList.get(i).getXTube() - AppHolder.tubeVelocity);
-                    canvas.drawBitmap(AppHolder.getBitmapControl().getDownTube(), tubeCollectionArrayList.get(i).getXTube(),
-                            tubeCollectionArrayList.get(i).getDownTube(), null);
+                   if (tubeCollectionArrayList.get(i).getColorTube() == 0){
+                       canvas.drawBitmap(AppHolder.getBitmapControl().getUpTube(), tubeCollectionArrayList.get(i).getXTube(),
+                               tubeCollectionArrayList.get(i).getUpTube_Y(), null);
+
+                       canvas.drawBitmap(AppHolder.getBitmapControl().getDownTube(), tubeCollectionArrayList.get(i).getXTube(),
+                               tubeCollectionArrayList.get(i).getDownTube(), null);
+                   }else {
+                       canvas.drawBitmap(AppHolder.getBitmapControl().getUpColorTube(), tubeCollectionArrayList.get(i).getXTube(),
+                               tubeCollectionArrayList.get(i).getUpTube_Y(), null);
+
+                       canvas.drawBitmap(AppHolder.getBitmapControl().getDownColorTube(), tubeCollectionArrayList.get(i).getXTube(),
+                               tubeCollectionArrayList.get(i).getDownTube(), null);
+                   }
                 }
                 canvas.drawText("" + scoreCount, 620, 400, designPaint);
             }
@@ -116,13 +131,12 @@ public class GameManager {
     // backgroundAnim
     public void backgroundAnimation (Canvas canvas){
         bgImage.setX(bgImage.getX() - bgImage.getVelocity());
-        if (bgImage.getX() < AppHolder.getBitmapControl().getBackgroundWirth()) {
+        if (bgImage.getX() <- AppHolder.getBitmapControl().getBackgroundWirth()) {
             bgImage.setX(0);
         }
-        canvas.drawBitmap(AppHolder.getBitmapControl().getBg(),
-                bgImage.getX(), bgImage.getY(), null);
+        canvas.drawBitmap(AppHolder.getBitmapControl().getBackgroundImage(), bgImage.getX(), bgImage.getY(), null);
         if (bgImage.getX() < -(AppHolder.getBitmapControl().getBackgroundWirth() - AppHolder.SCREEN_WIDTH_X)) {
-            canvas.drawBitmap(AppHolder.getBitmapControl().getBg(),
+            canvas.drawBitmap(AppHolder.getBitmapControl().getBackgroundImage(),
                     bgImage.getX() + AppHolder.getBitmapControl().getBackgroundWirth(), bgImage.getY(), null);
         }
     }

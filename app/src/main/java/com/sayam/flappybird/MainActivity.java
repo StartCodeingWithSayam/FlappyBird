@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         btnImg = findViewById(R.id.imageBtn);
         rate = findViewById(R.id.rate);
         exit = findViewById(R.id.exit);
-        AppHolder.assign(this.getApplicationContext());
+        AppHolder.assign(MainActivity.this);
 
         btnImg.setOnClickListener(view -> {
             Intent intent = new Intent(this,GameActivity.class);

@@ -6,6 +6,7 @@ public class TubeCollection {
     private int xTube;
     private int upTubeCollectionY;
     private Random random;
+    private int colorTube;
     // constructor
     public TubeCollection(int xTube, int upTubeCollectionY) {
         this.xTube = xTube;
@@ -16,10 +17,13 @@ public class TubeCollection {
     public int getXTube() {
         return xTube;
     }
+    public int getColorTube(){
+        return colorTube;
+    }
     public int getUpTubeCollectionY() {
         return upTubeCollectionY;
     }
-    public int getUpTube(){
+    public int getUpTube_Y(){
         return upTubeCollectionY - AppHolder.getBitmapControl().gerTubeHeight();
     }
     public int getDownTube(){
@@ -32,5 +36,9 @@ public class TubeCollection {
 
     public void setUpTubeCollectionY(int upTubeCollectionY) {
         this.upTubeCollectionY = upTubeCollectionY ;
+    }
+    public void setColorTube(){
+        colorTube = random.nextInt(2);
+
     }
 }

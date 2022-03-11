@@ -8,8 +8,8 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 
 public class AppHolder {
-    static BitmapControl control;
-    static GameManager manager;
+    static BitmapControl bitmapControl;
+    static GameManager gameManager;
     static int SCREEN_WIDTH_X;
     static int SCREEN_HEIGHT_Y;
     static int gravityPull;
@@ -20,7 +20,8 @@ public class AppHolder {
     static int minTubeCollection_Y;
     static int maxTubeCollection_Y;
     static int tubeDistance;
-    static Context gameActivityContext;
+    public static Context gameActivityContext;
+    static SoundPlayer soundPlayer;
     public static void holdGameVariable(){
         AppHolder.gravityPull = 5;
         AppHolder.JUMP_VELOCITY = -50;
@@ -34,19 +35,24 @@ public class AppHolder {
 
     }
     public static void assign(@NonNull Context context){
-        control = new BitmapControl(context.getResources());
-        manager = new GameManager();
+        bitmapControl = new BitmapControl(context.getResources());
+        gameManager = new GameManager();
         holdGameVariable();
         mapScreenSize(context);
+        soundPlayer = new SoundPlayer(context);
     }
+    public static SoundPlayer getSoundPlay(){
+        return soundPlayer;
+    }
+
 
     public static BitmapControl getBitmapControl() {
-        return control;
+        return bitmapControl;
     }
 
 
-    public static GameManager getGameManager(){
-        return manager;
+    public static GameManager getGameManager() {
+        return gameManager;
     }
 
     private static void mapScreenSize(@NonNull Context context){
