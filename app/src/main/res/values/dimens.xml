@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="FlappySize">50sp</dimen>
+    <dimen name="FlappyTextSize">30sp</dimen>
+    <dimen name="marginTop">20dp</dimen>
+    <dimen name="marginTop1">90dp</dimen>
+</resources>
