@@ -12,8 +12,8 @@ public class BitmapControl {
     Bitmap upColorTube,downColorTube;
     Bitmap UpColorTube,DownColorTube;
     public BitmapControl(Resources res) {
-        backgroundImage = BitmapFactory.decodeResource(res, R.drawable.bg);
-        backgroundImage = imageScale(backgroundImage);
+        backgroundImage = BitmapFactory.decodeResource(res, R.drawable.background);
+//        backgroundImage = imageScale(backgroundImage);
         flyingBirds = new Bitmap[3];
         flyingBirds[0] = BitmapFactory.decodeResource(res,R.drawable.bird_1);
         flyingBirds[1] = BitmapFactory.decodeResource(res,R.drawable.bird_2);
@@ -68,7 +68,7 @@ public class BitmapControl {
     public Bitmap imageScale(Bitmap bitmap){
         Bitmap bitmap1;
         try {
-            float widthHeightRatio = (float) getBackgroundWirth()
+            float widthHeightRatio = getBackgroundWirth()
                     /getBackgroundHeight();
             int bgScaleWidth = (int)(widthHeightRatio*AppHolder.SCREEN_WIDTH_X);
             bitmap1 = Bitmap.createScaledBitmap(bitmap,bgScaleWidth

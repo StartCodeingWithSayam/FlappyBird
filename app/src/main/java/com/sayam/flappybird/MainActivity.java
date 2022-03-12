@@ -25,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-//        rate.setOnClickListener(view -> {
-//
-//        });
-//        exit.setOnClickListener(view -> {
-//
-//        });
+
+        exit.setOnClickListener(view -> {
+            finish();
+            System.exit(0);
+        });
     }
 }

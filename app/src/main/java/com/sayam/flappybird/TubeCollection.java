@@ -5,7 +5,7 @@ import java.util.Random;
 public class TubeCollection {
     private int xTube;
     private int upTubeCollectionY;
-    private Random random;
+    private final Random random;
     private int colorTube;
     // constructor
     public TubeCollection(int xTube, int upTubeCollectionY) {

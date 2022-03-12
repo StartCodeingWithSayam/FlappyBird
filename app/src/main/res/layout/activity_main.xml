@@ -20,13 +20,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_below="@id/tvName"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/marginTop"
         android:contentDescription="@string/todo"
-        app:srcCompat="@drawable/red" />
+        app:srcCompat="@drawable/bird_main" />
 
     <ImageButton
         android:id="@+id/imageBtn"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/playbtn"
+        android:src="@drawable/play"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
